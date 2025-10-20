@@ -8,6 +8,10 @@ import necesse.engine.modLoader.annotations.ModEntry;
 import necesse.engine.registries.ItemRegistry;
 import necesse.engine.registries.MobRegistry;
 import necesse.engine.registries.ProjectileRegistry;
+import necesse.engine.registries.Recipes;
+import necesse.inventory.recipe.Recipe;
+import necesse.inventory.recipe.ingredient.ItemIngredient;
+import necesse.inventory.recipe.tech.RecipeTechRegistry;
 import necesse.gfx.gameTexture.GameTexture;
 
 @ModEntry
@@ -26,6 +30,14 @@ public class NecromancerMod {
     }
 
     public void postInit() {
-        // Additional setup can be added here when new necromancer content is introduced.
+        Recipes.registerModRecipe(new Recipe(
+                "necromancerwand",
+                1,
+                RecipeTechRegistry.MAGICWORKSTATION,
+                new ItemIngredient[]{
+                        new ItemIngredient("bone", 20),
+                        new ItemIngredient("ironbar", 8)
+                }
+        ));
     }
 }
