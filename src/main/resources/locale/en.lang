@@ -1,19 +1,8 @@
-[tile]
-exampletile=Example Tile
-
-[object]
-exampleobject=Example Object
-
 [item]
-exampleitem=Example Item
-examplesword=Example Sword
-examplestaff=Example Staff
+necromancerwand=Necromancer Wand
 
 [itemtooltip]
-examplestafftip=Shoots a homing, piercing projectile
+necromancerwandtip=Calls forth necrotic energy to serve the caster.
 
 [mob]
-examplemob=Example Mob
-
-[buff]
-examplebuff=Example Buff
+summonedzombie=Summoned Zombie
