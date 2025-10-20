@@ -20,7 +20,7 @@ public class NecromancerMod {
     }
 
     public void initResources() {
-        NecromancerSummonedZombie.texture = GameTexture.fromFile("mobs/summonedzombie");
+        NecromancerSummonedZombie.texture = GameTexture.fromFile("mobs/zombie");
     }
 
     public void postInit() {
