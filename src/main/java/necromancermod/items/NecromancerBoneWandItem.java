@@ -28,7 +28,7 @@ public class NecromancerBoneWandItem extends SummonToolItem {
         attackYOffset = 22;
         manaCost = new ManaCost(35);
         maxSummons = 1;
-        itemTexture = GameTexture.fromFile("items/spiderstaff");
+        itemTexture = GameTexture.fromFile("items/necromancerwand");
     }
 
     @Override
