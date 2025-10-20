@@ -1,4 +1,4 @@
-package examplemod.examples;
+package necromancermod.projectiles;
 
 import necesse.engine.gameLoop.tickManager.TickManager;
 import necesse.entity.mobs.GameDamage;
@@ -17,18 +17,12 @@ import necesse.level.maps.light.GameLight;
 import java.awt.*;
 import java.util.List;
 
-public class ExampleProjectile extends FollowingProjectile {
+public class NecroticBoltProjectile extends FollowingProjectile {
 
-    // Textures are loaded from resources/projectiles/<projectileStringID>
-    // If shadow path is defined when registering the projectile, it is loaded from
-    // that path into this projectile shadowTexture field
-
-    // Each projectile must have an empty constructor for the registry to construct them
-    public ExampleProjectile() {
+    public NecroticBoltProjectile() {
     }
 
-    // We use this constructor on attack to spawn the projectile with the correct parameters
-    public ExampleProjectile(Level level, Mob owner, float x, float y, float targetX, float targetY, float speed, int distance, GameDamage damage, int knockback) {
+    public NecroticBoltProjectile(Level level, Mob owner, float x, float y, float targetX, float targetY, float speed, int distance, GameDamage damage, int knockback) {
         this.setLevel(level);
         this.setOwner(owner);
         this.x = x;
@@ -40,37 +34,32 @@ public class ExampleProjectile extends FollowingProjectile {
         this.knockback = knockback;
     }
 
+    @Override
     public void init() {
         super.init();
-        turnSpeed = 1.25f; // This is a homing projectile with a turn speed
-        givesLight = false; // The projectile does not give off light
-        height = 18; // It's flying 18 pixels above ground
-        trailOffset = -14f; // The trail is 14 pixels behind the projectile
-        setWidth(16, true); // Extends the hitbox to 16 pixels wide
-        piercing = 2; // Pierces 2 mobs before disappearing (total of 3 hits)
-        bouncing = 10; // Can bounce 10 times off walls
+        turnSpeed = 1.25f;
+        givesLight = false;
+        height = 18;
+        trailOffset = -14f;
+        setWidth(16, true);
+        piercing = 2;
+        bouncing = 10;
     }
 
     @Override
     public Color getParticleColor() {
-        // Projectiles sometimes spawn particles. You can return null for no particles.
-        return new Color(63, 157, 18);
+        return new Color(90, 255, 134);
     }
 
     @Override
     public Trail getTrail() {
-        // Projectiles sometimes spawn trails. You can return null for no trail.
-        return new Trail(this, getLevel(), new Color(191, 147, 22), 26, 500, getHeight());
+        return new Trail(this, getLevel(), new Color(42, 135, 71), 26, 500, getHeight());
     }
 
     @Override
     public void updateTarget() {
-        // When we have traveled longer than 20 distance, start to find and update the target
         if (traveledDistance > 20) {
-            findTarget(
-                    m -> m.isHostile, // Filter all non hostile
-                    200, 450
-            );
+            findTarget(m -> m.isHostile, 200, 450);
         }
     }
 
@@ -82,7 +71,7 @@ public class ExampleProjectile extends FollowingProjectile {
         int drawY = camera.getDrawY(y);
         TextureDrawOptions options = texture.initDraw()
                 .light(light)
-                .rotate(getAngle(), texture.getWidth() / 2, 2) // We rotate the texture around the tip of it
+                .rotate(getAngle(), texture.getWidth() / 2, 2)
                 .pos(drawX, drawY - (int) getHeight());
 
         list.add(new EntityDrawable(this) {
