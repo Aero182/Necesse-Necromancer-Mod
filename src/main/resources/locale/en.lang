@@ -2,7 +2,7 @@
 necromancerwand=Necromancer Wand
 
 [itemtooltip]
-necromancerwandtip=Calls forth necrotic energy to serve the caster.
+necromancerwandtip=Summons a loyal undead to fight for you.
 
 [mob]
-summonedzombie=Summoned Zombie
+necromancer_summoned_zombie=Summoned Zombie
